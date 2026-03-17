@@ -1,0 +1,21 @@
+package utils;
+
+
+import com.google.gson.Gson;
+
+public interface BaseApi {
+    //<----------------------end points----------------->
+    String BASE_URL = "https://contactapp-telran-backend.herokuapp.com";
+    String BASE_URL_HTTP = "http://contactapp-telran-backend.herokuapp.com";
+
+    String REGISTRATION_URL = "/v1/user/registration/usernamepassword" ;
+    String LOGIN_URL = "/v1/user/login/usernamepassword";
+    String ADD_NEW_CONTACT_URL = "/v1/contacts";
+    String GET_ALL_CONTACTS_URL = "/v1/contacts";
+    String EDIT_CONTACT_URL = "/v1/contacts";
+    String DELETE_CONTACT_URL = "/v1/contacts/"; //in swagger /v1/contacts/{id} - detete contact by id
+
+    Gson GSON = new Gson();
+    String AUTH = "Authorization";
+
+}
