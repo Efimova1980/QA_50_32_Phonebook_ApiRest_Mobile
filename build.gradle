@@ -25,9 +25,14 @@ dependencies {
     implementation("io.rest-assured:json-schema-validator:3.0.0")
 
     implementation 'net.datafaker:datafaker:2.5.2'
-    implementation 'io.appium:java-client:8.3.0'
+    implementation 'io.appium:java-client:9.2.2'
 }
 
 test {
     useTestNG()
 }
+
+//test {
+//    useTestNG() // или useJUnit()
+//    jvmArgs += "--add-opens=java.base/java.lang=ALL-UNNAMED"
+//}

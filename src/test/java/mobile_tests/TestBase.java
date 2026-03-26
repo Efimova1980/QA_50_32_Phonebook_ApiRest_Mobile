@@ -1,0 +1,27 @@
+package mobile_tests;
+
+import io.appium.java_client.AppiumDriver;
+import manager.AppiumConfig;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class TestBase {
+
+    protected static AppiumDriver driver;
+
+    @BeforeMethod
+    public void setup(){
+        driver = AppiumConfig.createAppiumDriver("pexel.properties");
+    }
+
+//    @Test
+//    public void start(){}
+
+    @AfterMethod()
+    public void tearDown(){
+        if (driver != null){
+            driver.quit();
+        }
+    }
+}
