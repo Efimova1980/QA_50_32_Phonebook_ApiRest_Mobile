@@ -92,7 +92,7 @@ public class ContactDataProvider {
     }
 
     @DataProvider
-    public Iterator<Contact> dataProviderFromFile_EmptyFields(){
+    public Iterator<Contact> dataProviderFromFile_EmptyField(){
         List<Contact> list = new ArrayList<>();
         Contact contact = positiveContact();
 
@@ -100,7 +100,8 @@ public class ContactDataProvider {
                 new FileReader("src/test/resources/data_csv/empty_fields_contact.csv"))){
             String line = bufferedReader.readLine();
             while (line != null){
-                String[] splitArray = line.split(",");
+                //split(",", -1) does not ignore empty cell
+                String[] splitArray = line.split(",", -1);
                 list.add(Contact.builder()
                         .name(splitArray[0])
                         .lastName(splitArray[1])

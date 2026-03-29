@@ -18,6 +18,8 @@ public class LoginRegistrationScreen extends BaseScreen {
     WebElement btnRegistration;
     @AndroidFindBy(id ="com.sheygam.contactapp:id/loginBtn")
     WebElement btnlogin;
+    @AndroidFindBy(id = "com.sheygam.contactapp:id/action_bar")
+    WebElement titleAuth;
 
     public void typeLoginRegistrationForm(User user){
         inputEmail.sendKeys(user.getUsername());
@@ -31,4 +33,9 @@ public class LoginRegistrationScreen extends BaseScreen {
     public void clickBtnLogin(){
         btnlogin.click();
     }
+
+    public boolean isTitleAuthenticationPresent(){
+        return isElementPresent(titleAuth, 3);
+    }
 }
+

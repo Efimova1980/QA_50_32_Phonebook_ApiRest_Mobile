@@ -13,7 +13,7 @@ import screens.SplashScreen;
 import static utils.PropertiesReader.getProperty;
 import static utils.UserFactory.*;
 
-public class LoginRegistrationTests extends TestBase{
+public class RegistrationTests extends TestBase{
     LoginRegistrationScreen loginRegistrationScreen;
 
     @BeforeMethod
@@ -50,11 +50,11 @@ public class LoginRegistrationTests extends TestBase{
         loginRegistrationScreen.typeLoginRegistrationForm(user);
         loginRegistrationScreen.clickBtnRegistration();
 
-        if(new ErrorScreen(driver).isAppCrashed())
-            Assert.fail("BUG: App crashed (Contacts App has stopped)");
+//        if(new ErrorScreen(driver).isAppCrashed())
+//            Assert.fail("BUG: App crashed (Contacts App has stopped)");
 
-//        Assert.assertTrue(new ErrorScreen(driver)
-//                    .validateTextInError("{password=must not be blank}", 5));
+        if(new ErrorScreen(driver).isAppStopDisplay())
+            Assert.fail("BUG: App crashed (Contacts App has stopped)");
     }
 
     @Test
@@ -65,11 +65,11 @@ public class LoginRegistrationTests extends TestBase{
         loginRegistrationScreen.typeLoginRegistrationForm(user);
         loginRegistrationScreen.clickBtnRegistration();
 
-        if(new ErrorScreen(driver).isAppCrashed())
-            Assert.fail("BUG: App crashed (Contacts App has stopped)");
+//        if(new ErrorScreen(driver).isAppCrashed())
+//            Assert.fail("BUG: App crashed (Contacts App has stopped)");
 
-//        Assert.assertTrue(new ErrorScreen(driver)
-//                .validateTextInError("{username and password=must not be blank}", 5));
+        if(new ErrorScreen(driver).isAppStopDisplay())
+            Assert.fail("BUG: App crashed (Contacts App has stopped)");
     }
 
     @Test
@@ -99,14 +99,4 @@ public class LoginRegistrationTests extends TestBase{
                 .validateTextInError("{username=must be a well-formed email address}", 5));
     }
 
-    //-------------------------------------LOGIN TESTS--------------------------------------------------------
-    @Test
-    public void loginPositiveTest(){
-        User user = new User(getProperty("base.properties", "login"),
-                getProperty("base.properties", "password"));
-        loginRegistrationScreen.typeLoginRegistrationForm(user);
-        loginRegistrationScreen.clickBtnLogin();
-        Assert.assertTrue(new ContactListScreen(driver)
-                .isBtnAddVisible());
-    }
 }

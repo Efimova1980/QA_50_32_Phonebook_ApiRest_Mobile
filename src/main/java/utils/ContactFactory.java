@@ -16,4 +16,26 @@ public class ContactFactory {
                 .description("My friends")
                 .build();
     }
+
+    public static Contact positiveContactOnlyRequiredFields(){
+        return Contact.builder()
+                .name(faker.name().firstName())
+                .lastName(faker.name().lastName())
+                .phone(faker.number().digits(13))
+                .email(faker.internet().emailAddress())
+                .address(faker.address().fullAddress())
+                .description("")
+                .build();
+    }
+
+    public static Contact emptyContact(){
+        return Contact.builder()
+                .name("")
+                .lastName("")
+                .phone("")
+                .email("")
+                .address("")
+                .description("")
+                .build();
+    }
 }

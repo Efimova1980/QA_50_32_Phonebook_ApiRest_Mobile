@@ -20,12 +20,17 @@ public class ErrorScreen extends BaseScreen{
     @AndroidFindBy(id = "android:id/message")
     WebElement textError;
 
+    /*
     @AndroidFindBy(id = "android:id/aerr_close") //message "app keep closing"
     WebElement errClose;
     @AndroidFindBy(id = "android:id/aerr_restart") //message "app has closed"
     WebElement errRestart;
+     */
+    @AndroidFindBy(id = "android:id/title_template")
+    WebElement errTitle;
 
 
+    /*
     public boolean isAppCrashed() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         try {//if error 'app keep closing'
@@ -40,9 +45,13 @@ public class ErrorScreen extends BaseScreen{
             }
         }
     }
+    */
 
     public  boolean validateTextInError(String text, int time){
         return isTexInElementPresent(textError, text, time);
     }
 
+    public boolean isAppStopDisplay(){
+        return isElementPresent(errTitle, 5);
+    }
 }
