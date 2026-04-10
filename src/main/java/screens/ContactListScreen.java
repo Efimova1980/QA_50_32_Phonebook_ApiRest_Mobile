@@ -5,10 +5,13 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Direction;
+import utils.SwipeUtils;
 
 import java.time.Duration;
+import java.util.List;
 
-public class ContactListScreen extends BaseScreen{
+public class ContactListScreen extends BaseScreen implements SwipeUtils {
     public ContactListScreen(AppiumDriver driver){
         super(driver);
     }
@@ -23,7 +26,10 @@ public class ContactListScreen extends BaseScreen{
     WebElement dotsMenu;
     @AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.sheygam.contactapp:id/content'])[1]")
     WebElement menuLogout;
-
+    @AndroidFindBy(id = "android:id/button1")
+    WebElement btnYes;
+    @AndroidFindBy(xpath = "(//*[@resource-id='com.sheygam.contactapp:id/rowContainer'])")
+    List<WebElement> contactListScreen;
 
     public boolean validateTextInContactListScreeenAfterReg(String text, int time){
         return isTexInElementPresent(noContacts, text, time);
@@ -47,5 +53,17 @@ public class ContactListScreen extends BaseScreen{
 
     public void clickMenuLogout(){
         menuLogout.click();
+    }
+
+    public void deleteContactMiddle(){
+        new WebDriverWait(driver, Duration.ofSeconds(2)).until(ExpectedConditions.visibilityOf(btnAdd));
+        swipeScreen(driver, Direction.RIGHT);
+        btnYes.click();
+    }
+
+    public void deleteFirstContact(){
+        new WebDriverWait(driver, Duration.ofSeconds(2)).until(ExpectedConditions.visibilityOf(btnAdd));
+        swipeInsideElement(driver, contactListScreen.get(0), Direction.RIGHT);
+        btnYes.click();
     }
 }
