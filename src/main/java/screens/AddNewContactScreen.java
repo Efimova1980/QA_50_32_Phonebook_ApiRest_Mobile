@@ -41,5 +41,22 @@ public class AddNewContactScreen extends BaseScreen{
         btnCreate.click();
     }
 
+    public void typeEditNewContactForm(Contact contact){
+        inputName.clear();
+        inputName.sendKeys(contact.getName());
+        inputLastName.clear();
+        inputLastName.sendKeys(contact.getLastName());
+        inputEmail.clear();
+        inputEmail.sendKeys(contact.getEmail());
+        inputPhone.clear();
+        inputPhone.sendKeys(contact.getPhone());
+        inputAddress.clear();
+        inputAddress.sendKeys(contact.getAddress());
+        inputDesc.clear();
+        inputDesc.sendKeys(contact.getDescription());
+    }
 
+    public void clickBtnUpdate(){
+        btnUpdate.click();
+    }
 }

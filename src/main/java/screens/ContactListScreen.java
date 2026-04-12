@@ -1,7 +1,9 @@
 package screens;
 
+import dto.Contact;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -47,6 +49,10 @@ public class ContactListScreen extends BaseScreen implements SwipeUtils {
         return isTexInElementPresent(textContactAdded, text, 3);
     }
 
+    public boolean isTextInFirstContactPresent(String text){
+        return isTexInElementPresent(textContactAdded, text, 3);
+    }
+
     public void clickDotsMenu(){
         dotsMenu.click();
     }
@@ -66,4 +72,10 @@ public class ContactListScreen extends BaseScreen implements SwipeUtils {
         swipeInsideElement(driver, contactListScreen.get(0), Direction.RIGHT);
         btnYes.click();
     }
+
+    public void EditFirstContact() {
+        new WebDriverWait(driver, Duration.ofSeconds(2)).until(ExpectedConditions.visibilityOf(btnAdd));
+        swipeInsideElement(driver, contactListScreen.get(0), Direction.LEFT);
+    }
+
 }
