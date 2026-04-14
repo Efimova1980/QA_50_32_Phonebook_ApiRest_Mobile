@@ -10,8 +10,10 @@ import manager.ContactController;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import screens.AddNewContactScreen;
 import screens.ContactListScreen;
+import screens.EditContactScreen;
 import screens.LoginRegistrationScreen;
 import utils.BaseApi;
 import utils.ContactFactory;
@@ -24,6 +26,7 @@ public class EditContactTests extends TestBase{
     ContactListScreen contactListScreen;
     Token token;
     ContactsDto listContacts;
+    SoftAssert softAssert = new SoftAssert();
 
     @BeforeMethod
     public void login(){
@@ -43,13 +46,14 @@ public class EditContactTests extends TestBase{
     public void EditFirstContactPositiveTest(){
         Contact contact = ContactFactory.positiveContact();
         contactListScreen.EditFirstContact();
-        AddNewContactScreen editContactScreen = new AddNewContactScreen(driver);
+        EditContactScreen editContactScreen = new EditContactScreen(driver);
         editContactScreen.typeEditNewContactForm(contact);
         editContactScreen.clickBtnUpdate();
 
         Response response = ContactController.requestGetAllUserContacts(token.getToken());
         if (response.getStatusCode() == 200)
             listContacts = response.as(ContactsDto.class);
-        Assert.assertEquals(listContacts.getContacts().get(0), contact);
+        softAssert.assertTrue(contactListScreen.isTextContactUpdatedPresent("Contact was updated!"), "validate message");
+        softAssert.assertEquals(listContacts.getContacts().get(0), contact, "validate contact updated");
     }
 }

@@ -33,6 +33,9 @@ public class ContactListScreen extends BaseScreen implements SwipeUtils {
     @AndroidFindBy(xpath = "(//*[@resource-id='com.sheygam.contactapp:id/rowContainer'])")
     List<WebElement> contactListScreen;
 
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Contact was updated!']")
+    WebElement textContactUpdated;
+
     public boolean validateTextInContactListScreeenAfterReg(String text, int time){
         return isTexInElementPresent(noContacts, text, time);
     }
@@ -46,6 +49,10 @@ public class ContactListScreen extends BaseScreen implements SwipeUtils {
     }
 
     public boolean isTextContactAddedPresent(String text){
+        return isTexInElementPresent(textContactAdded, text, 3);
+    }
+
+    public boolean isTextContactUpdatedPresent(String text){
         return isTexInElementPresent(textContactAdded, text, 3);
     }
 

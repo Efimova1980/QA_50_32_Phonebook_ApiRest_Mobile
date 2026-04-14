@@ -24,8 +24,8 @@ public class AddNewContactScreen extends BaseScreen{
     WebElement inputDesc;
     @AndroidFindBy(id = "com.sheygam.contactapp:id/createBtn")
     WebElement btnCreate;
-    @AndroidFindBy(id = "com.sheygam.contactapp:id/updateBtn")
-    WebElement btnUpdate;
+//    @AndroidFindBy(id = "com.sheygam.contactapp:id/updateBtn")
+//    WebElement btnUpdate;
 
 
     public void typeAddNewContactForm(Contact contact){
@@ -40,23 +40,23 @@ public class AddNewContactScreen extends BaseScreen{
     public void clickBtnCreate(){
         btnCreate.click();
     }
-
-    public void typeEditNewContactForm(Contact contact){
-        inputName.clear();
-        inputName.sendKeys(contact.getName());
-        inputLastName.clear();
-        inputLastName.sendKeys(contact.getLastName());
-        inputEmail.clear();
-        inputEmail.sendKeys(contact.getEmail());
-        inputPhone.clear();
-        inputPhone.sendKeys(contact.getPhone());
-        inputAddress.clear();
-        inputAddress.sendKeys(contact.getAddress());
-        inputDesc.clear();
-        inputDesc.sendKeys(contact.getDescription());
-    }
-
-    public void clickBtnUpdate(){
-        btnUpdate.click();
-    }
+//
+//    public void typeEditNewContactForm(Contact contact){
+//        inputName.clear();
+//        inputName.sendKeys(contact.getName());
+//        inputLastName.clear();
+//        inputLastName.sendKeys(contact.getLastName());
+//        inputEmail.clear();
+//        inputEmail.sendKeys(contact.getEmail());
+//        inputPhone.clear();
+//        inputPhone.sendKeys(contact.getPhone());
+//        inputAddress.clear();
+//        inputAddress.sendKeys(contact.getAddress());
+//        inputDesc.clear();
+//        inputDesc.sendKeys(contact.getDescription());
+//    }
+//
+//    public void clickBtnUpdate(){
+//        btnUpdate.click();
+//    }
 }
