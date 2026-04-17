@@ -55,7 +55,7 @@ public class ContactListScreen extends BaseScreen implements SwipeUtils {
     }
 
     public boolean isTextContactUpdatedPresent(String text){
-        return isTexInElementPresent(textContactAdded, text, 3);
+        return isTexInElementPresent(textContactUpdated, text, 5);
     }
 
     public boolean isTextInFirstContactPresent(String text){
