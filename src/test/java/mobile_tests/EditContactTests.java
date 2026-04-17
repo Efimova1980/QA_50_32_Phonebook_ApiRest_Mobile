@@ -88,4 +88,5 @@ public class EditContactTests extends TestBase{
         Assert.assertTrue(new ErrorScreen(driver)
                 .validateTextInError("must not be blank", 3));
     }
+
 }
