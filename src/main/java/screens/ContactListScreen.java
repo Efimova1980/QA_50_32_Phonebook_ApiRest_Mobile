@@ -30,6 +30,8 @@ public class ContactListScreen extends BaseScreen implements SwipeUtils {
     WebElement menuLogout;
     @AndroidFindBy(id = "android:id/button1")
     WebElement btnYes;
+    @AndroidFindBy(id = "android:id/button2")
+    WebElement btnCancel;
     @AndroidFindBy(xpath = "(//*[@resource-id='com.sheygam.contactapp:id/rowContainer'])")
     List<WebElement> contactListScreen;
 
@@ -74,11 +76,19 @@ public class ContactListScreen extends BaseScreen implements SwipeUtils {
         btnYes.click();
     }
 
+    public void clickCancel(){
+        btnCancel.click();
+    }
+
+    public void clickYes(){
+        btnYes.click();
+    }
+
     public void deleteFirstContact(){
         new WebDriverWait(driver, Duration.ofSeconds(2)).until(ExpectedConditions.visibilityOf(btnAdd));
         swipeInsideElement(driver, contactListScreen.get(0), Direction.RIGHT);
-        btnYes.click();
     }
+
 
     public void EditFirstContact() {
         new WebDriverWait(driver, Duration.ofSeconds(2)).until(ExpectedConditions.visibilityOf(btnAdd));
